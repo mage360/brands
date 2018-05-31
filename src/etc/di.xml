@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Mage360\Brands\Api\BrandsRepositoryInterface" type="Mage360\Brands\Model\BrandsRepository" />
+    <preference for="Mage360\Brands\Api\Data\BrandsInterface" type="Mage360\Brands\Model\Brands" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mage360_brands_brands_listing_data_source" xsi:type="string">Mage360\Brands\Model\ResourceModel\Brands\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mage360\Brands\Model\ResourceModel\Brands\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">mage360_brands</argument>
+            <argument name="eventPrefix" xsi:type="string">mage360_brands_brands_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">brands_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Mage360\Brands\Model\ResourceModel\Brands</argument>
+        </arguments>
+    </type>
+
+    <type name="Mage360\Brands\Model\Brands">
+        <arguments>
+            <argument name="uploaderPool" xsi:type="object">Mage360\Brands\Model\UploaderPool</argument>
+            <argument name="optionProviders" xsi:type="array">
+                <item name="brand_id" xsi:type="object">Mage360\Brands\Model\Source\Brands</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mage360\Brands\Model\Output">
+        <arguments>
+            <argument name="templateProcessor" xsi:type="object">Magento\Widget\Model\Template\Filter</argument>
+        </arguments>
+    </type>
+    <virtualType name="Mage360BrandsImageUploader" type="Mage360\Brands\Model\Uploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">Mage360\Brands\Model\Uploader::IMAGE_TMP_PATH</argument>
+            <argument name="basePath" xsi:type="const">Mage360\Brands\Model\Uploader::IMAGE_PATH</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Mage360\Brands\Controller\Adminhtml\Brands\Image\Upload">
+        <arguments>
+            <argument name="uploader" xsi:type="object">Mage360BrandsImageUploader</argument>
+        </arguments>
+    </type>
+    <virtualType name="Mage360BrandsFileUploader" type="Mage360\Brands\Model\Uploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="const">Mage360\Brands\Model\Uploader::FILE_TMP_PATH</argument>
+            <argument name="basePath" xsi:type="const">Mage360\Brands\Model\Uploader::FILE_PATH</argument>
+            <argument name="allowedExtensions" xsi:type="array" />
+        </arguments>
+    </virtualType>
+    <type name="Mage360\Brands\Controller\Adminhtml\Brands\File\Upload">
+        <arguments>
+            <argument name="uploader" xsi:type="object">Mage360BrandsFileUploader</argument>
+        </arguments>
+    </type>
+    <type name="Mage360\Brands\Model\UploaderPool">
+        <arguments>
+            <argument name="uploaders" xsi:type="array">
+                <item name="image" xsi:type="string">Mage360BrandsImageUploader</item>
+                <item name="file" xsi:type="string">Mage360BrandsFileUploader</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mage360\Brands\Model\Image">
+        <arguments>
+            <argument name="uploader" xsi:type="object">Mage360BrandsImageUploader</argument>
+        </arguments>
+    </type>
+    <virtualType name="Mage360BrandsModelSourceStatus" type="Mage360\Brands\Model\Source\Options">
+        <arguments>
+            <argument name="options" xsi:type="array">
+                <item name="1" xsi:type="array">
+                    <item name="value" xsi:type="const">Mage360\Brands\Model\Brands::STATUS_ENABLED</item>
+                    <item name="label" xsi:type="string" translate="true">Enabled</item>
+                </item>
+                <item name="2" xsi:type="array">
+                    <item name="value" xsi:type="const">Mage360\Brands\Model\Brands::STATUS_DISABLED</item>
+                    <item name="label" xsi:type="string" translate="true">Disabled</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Catalog\Model\Layer\Resolver">
+        <arguments>
+            <argument name="layersPool" xsi:type="array">
+                <item name="category" xsi:type="string">Magento\Catalog\Model\Layer\Category</item>
+                <item name="search" xsi:type="string">Magento\Catalog\Model\Layer\Search</item>
+                <item name="customlayer" xsi:type="string">Mage360\Brands\Model\Layer</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="brandsProductFilterList" type="Mage360\Brands\Model\Layer\FilterList">
+        <arguments>
+            <argument name="filterableAttributes" xsi:type="object">Mage360\Brands\Model\Layer\FilterableAttributeList</argument>
+            <argument name="filters" xsi:type="array">
+                <item name="attribute" xsi:type="string">Mage360\Brands\Model\Layer\Filter\Attribute</item>
+                <item name="category" xsi:type="string">Mage360\Brands\Model\Layer\Filter\Category</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="Mage360\Brands\Block\Navigation\Brandsproductnavigation" type="Magento\LayeredNavigation\Block\Navigation">
+        <arguments>
+            <argument name="filterList" xsi:type="object">brandsProductFilterList</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Theme\Block\Html\Topmenu">
+        <plugin name="add_cms_menu" type="Mage360\Brands\Plugin\Topmenu" sortOrder="1" />
+    </type>
+
+</config>

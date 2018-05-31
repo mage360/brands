@@ -1,0 +1,20 @@
+<?php
+    $brand  = $this->getBrand();
+
+?>
+<style>
+
+</style>
+<div class="mage360-brands-wrapper">
+    <div class="brand">
+        <div class="brand-img">
+            <?php  if(!empty($brand->getLogoPathUrl())): ?>
+                <img src="<?php echo $brand->getLogoPathUrl(); ?>" alt="<?php echo $brand->getName(); ?>" />
+            <?php endif; ?>
+        </div>
+        <div class="brand-desc">
+            <?php echo $brand->getDescription(); ?>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

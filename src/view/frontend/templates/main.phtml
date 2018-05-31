@@ -1,0 +1,47 @@
+<?php $brands = $this->getBrands(); ?>
+<?php $featuredbrands = $this->getFeaturedBrands(); ?>
+
+<style>
+    .mage360-brands{margin:0;padding:0;list-style:none;}
+    .mage360-brands .mage360-brand{ display:inline-block;padding:20px;border:1px solid #efefef;margin:10px;}
+    .mage360-brands .mage360-brand a{}
+    .mage360-brands .mage360-brand a img{width:90px;}
+    .clearfix{clear:both;}
+</style>
+<div class="mage360-brands-wrapper">
+    <?php if(!empty($featuredbrands)): ?>
+     <div class="mage360-brands featured">
+     	<h3><?php echo $block->escapeHtml(__("Featured Brands")); ?></h3>
+     	<?php foreach($featuredbrands as $featuredbrand): ?>
+     	    <div class="mage360-brand">
+     	        <a href="<?php echo $featuredbrand->getUrl(); ?>" >
+                <?php if(!empty($featuredbrand->getLogoPathUrl())): ?>
+                    <img src="<?php echo $featuredbrand->getLogoPathUrl(); ?>" alt="<?php echo $featuredbrand->getName(); ?>" />
+                <?php else :
+                    echo $featuredbrand->getName();
+                endif; ?>
+                </a>
+            </div>
+     	<?php endforeach; ?>
+     	
+     </div>
+    <?php endif; ?>
+    
+    <div class="mage360-brands">
+        <h3><?php echo $block->escapeHtml(__("All Brands")); ?></h3>
+    <?php foreach($brands as $brand): ?>
+        <div class="mage360-brand">
+
+            <a href="<?php echo $brand->getUrl(); ?>" >
+                <?php if(!empty($brand->getLogoPathUrl())): ?>
+                    <img src="<?php echo $brand->getLogoPathUrl(); ?>" alt="<?php echo $brand->getName(); ?>" />
+                <?php else :
+                    echo $brand->getName();
+                endif; ?>
+            </a>
+        </div>
+
+    <?php endforeach; ?>
+        <div class="clearfix"></div>
+    </div><!-- .mage360-brands -->
+</div><!-- .mage360-brands-wrapper -->

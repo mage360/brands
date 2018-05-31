@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mage360_Brands extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Mage360
+ * @package   Mage360_Brands
+ * @copyright 2018 Mage360
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author    Qaiser Bashir
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mage360_brands>
+            <brands_url>
+                <add_main_menu>1</add_main_menu>
+                <menu_name>Shop by Brands</menu_name>
+            </brands_url>
+            <brands_seo>
+                <meta_title>Shop by Brands</meta_title>
+                <meta_description>Shop by Brands</meta_description>
+                <meta_keyword></meta_keyword>
+            </brands_seo>
+        </mage360_brands>
+    </default>
+</config>

@@ -1,2 +1,1 @@
-# brands
-Magento 2 Shop by brand extension/Module
+# Magento2 shop by brand extension

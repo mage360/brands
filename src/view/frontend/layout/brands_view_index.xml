@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mage360_Brands extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Mage360
+ * @package   Mage360_Brands
+ * @copyright 2018 Mage360
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author    Qaiser Bashir
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Brands</title>
+        <css src="Mage360_Brands::css/brands.css"/>
+    </head>
+    <body>
+       <referenceContainer name="content">
+
+            <block class="Mage360\Brands\Block\View" name="Brands.Brand" template="Mage360_Brands::view.phtml"/>
+        </referenceContainer>
+
+        <attribute name="class" value="page-with-filter"/>
+        <referenceContainer name="sidebar.main">
+            <block class="Mage360\Brands\Block\Navigation\Brandsproductnavigation" name="catalog.leftnav" before="-" template="Magento_LayeredNavigation::layer/view.phtml">
+                <block class="Magento\LayeredNavigation\Block\Navigation\State" name="catalog.navigation.state" as="state" />
+                <block class="Magento\LayeredNavigation\Block\Navigation\FilterRenderer" name="catalog.navigation.renderer" as="renderer" template="Magento_LayeredNavigation::layer/filter.phtml"/>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <block class="Mage360\Brands\Block\View" name="Brands.Brand" template="Mage360_Brands::view.phtml"/>
+            <block class="Mage360\Brands\Block\Product\CustomList" name="custom.products.list" as="product_list" template="Magento_Catalog::product/list.phtml">
+                <container name="category.product.list.additional" as="additional" />
+                <block class="Magento\Framework\View\Element\RendererList" name="category.product.type.details.renderers" as="details.renderers">
+                    <block class="Magento\Framework\View\Element\Template" as="default"/>
+                </block>
+                <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                    <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+                </block>
+                <action method="setToolbarBlockName">
+                    <argument name="name" xsi:type="string">product_list_toolbar</argument>
+                </action>
+            </block>
+        </referenceContainer>
+
+    </body>
+</page>

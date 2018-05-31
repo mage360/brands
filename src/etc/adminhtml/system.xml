@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mage360_Brands extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License
+ * that is bundled with this package in the file LICENSE
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/mit-license.php
+ *
+ * @category  Mage360
+ * @package   Mage360_Brands
+ * @copyright 2018 Mage360
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @author    Qaiser Bashir
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mage360_brands" sortOrder="2000">
+            <label>Mage360</label>
+        </tab>
+        <section id="mage360_brands" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Brands</label>
+            <tab>mage360_brands</tab>
+            <resource>Mage360_Brands::brands</resource>
+            <group id="brands_general" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+
+                <field id="brand_attribute" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Brand Product Attribute</label>
+                    <source_model>Mage360\Brands\Model\Attribute</source_model>
+                    <comment>
+                        <![CDATA[Select Brand product attribute.]]>
+                    </comment>
+                </field>
+
+                <field id="breadcrumbs" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enable Breadcrumbs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+            </group>
+            <group id="brands_url" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Menu</label>
+
+                <field id="add_main_menu" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Add link in Main menu</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="menu_name" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Menu name</label>
+                    <comment>
+                        <![CDATA[Menu name. default: Shop by Brands]]>
+                    </comment>
+                </field>
+                <field id="brand_url_key" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Url Key</label>
+                    <backend_model>Mage360\Brands\Model\UrlRewrite</backend_model>
+                    <comment>
+                        <![CDATA[Shop by brands main page url.]]>
+                    </comment>
+                </field>
+
+            </group>
+            <group id="brands_seo" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Seo</label>
+                
+                <field id="meta_description" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Meta Description</label>
+                    <comment>
+                        <![CDATA[Main page meta description.]]>
+                    </comment>
+                </field>
+                <field id="meta_keyword" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Meta Keywords</label>
+                    <comment>
+                        <![CDATA[Main page meta keywords.]]>
+                    </comment>
+                </field>
+
+            </group>
+        </section>
+    </system>
+</config>
