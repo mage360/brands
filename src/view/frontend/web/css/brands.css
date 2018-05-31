@@ -1,6 +1,42 @@
+.mage360-brands{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
 
-.mage360-brands-wrapper{clear:both;margin-bottom:30px;}
-.brand-img{width:30%;float:left;}
-.brand-img img{max-width:100%;}
-.brand-desc{width:65%; padding: 0 2%; float:left;}
-.clearfix{clear:both;}
+.mage360-brands .mage360-brand{
+	display:inline-block;
+	padding:20px;
+	border:1px solid #efefef;
+	margin:10px;
+}
+
+.mage360-brands .mage360-brand a{}
+
+.mage360-brands .mage360-brand a img{
+	width:90px;
+}
+    
+.mage360-brands-wrapper{
+	clear:both;
+	margin-bottom:30px;
+}
+
+.brand-img{
+	width:30%;
+	float:left;
+}
+
+.brand-img img{
+	max-width:100%;
+}
+
+.brand-desc{
+	width:65%; 
+	padding: 0 2%; 
+	float:left;
+}
+
+.clearfix{
+	clear:both;
+}

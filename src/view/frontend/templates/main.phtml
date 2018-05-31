@@ -1,13 +1,6 @@
 <?php $brands = $this->getBrands(); ?>
 <?php $featuredbrands = $this->getFeaturedBrands(); ?>
 
-<style>
-    .mage360-brands{margin:0;padding:0;list-style:none;}
-    .mage360-brands .mage360-brand{ display:inline-block;padding:20px;border:1px solid #efefef;margin:10px;}
-    .mage360-brands .mage360-brand a{}
-    .mage360-brands .mage360-brand a img{width:90px;}
-    .clearfix{clear:both;}
-</style>
 <div class="mage360-brands-wrapper">
     <?php if(!empty($featuredbrands)): ?>
      <div class="mage360-brands featured">
