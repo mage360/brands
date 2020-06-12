@@ -113,7 +113,6 @@ class Index extends Action
             /**
              * Prepare Layer and pass collection.
              */
-            $this->layerResolver->create('search');
             
             $collection = $this->layerResolver->get()->getProductCollection();
             
